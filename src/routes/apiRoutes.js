@@ -11,14 +11,12 @@ const {
     deleteTransaction,
 } = require('../controllers/transactionController');
 
-// Import auth middlewares
-const { protect, authorize } = require('../middleware/authMiddleware');
-
 // -------- User Routes --------
 router.post('/users', UserController.createUser);
 router.get('/users', UserController.getAllUsers);
 
 // -------- Transaction Routes --------
+<<<<<<< HEAD
 // ANYONE can view all transactions
 router.get('/transactions', protect, authorize('admin', 'manager', 'user'), getAllTransactions);
 
@@ -35,3 +33,12 @@ router.put('/transactions/:id', protect, authorize('admin'), updateTransaction);
 router.delete('/transactions/:id', protect, authorize('admin'), deleteTransaction);
 
 module.exports = router;
+=======
+router.get('/transactions', getAllTransactions);
+router.post('/transactions', createTransaction);
+router.get('/transactions/:id', getTransactionById);
+router.put('/transactions/:id', updateTransaction);
+router.delete('/transactions/:id', deleteTransaction);
+
+module.exports = router;
+>>>>>>> 825265ba21dab3e1608cbd7d7e1cb52fb4320362
